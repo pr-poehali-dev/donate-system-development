@@ -11,7 +11,7 @@ const privileges = {
   premium: [
     {
       name: 'HERO',
-      price: '99₽',
+      price: '49₽',
       features: [
         'Уникальный кит - /kit hero',
         'Виртуальный верстак - /craft',
@@ -25,7 +25,7 @@ const privileges = {
     },
     {
       name: 'TITAN',
-      price: '199₽',
+      price: '99₽',
       features: [
         'Уникальный кит - /kit titan',
         'Надеть блок - /hat',
@@ -40,7 +40,7 @@ const privileges = {
     },
     {
       name: 'AVENGER',
-      price: '299₽',
+      price: '149₽',
       features: [
         'Уникальный кит - /kit avenger',
         'Открыть эндер-сундук - /enderchest',
@@ -56,7 +56,7 @@ const privileges = {
     },
     {
       name: 'OVERLORD',
-      price: '499₽',
+      price: '249₽',
       features: [
         'Уникальный кит - /kit overlord',
         'Доступ к префиксам - /prefix',
@@ -73,7 +73,7 @@ const privileges = {
     },
     {
       name: 'MAGISTER',
-      price: '799₽',
+      price: '399₽',
       features: [
         'Уникальный кит - /kit magister',
         'Доступ к префиксам - /prefix',
@@ -92,7 +92,7 @@ const privileges = {
     },
     {
       name: 'IMPERATOR',
-      price: '999₽',
+      price: '499₽',
       features: [
         'Уникальный кит - /kit imperator',
         'Доступ к префиксам - /prefix',
@@ -112,7 +112,7 @@ const privileges = {
     },
     {
       name: 'DRAGON',
-      price: '1499₽',
+      price: '749₽',
       features: [
         'Уникальный кит - /kit dragon',
         'Доступ к префиксам - /prefix',
@@ -134,7 +134,7 @@ const privileges = {
     },
     {
       name: 'COBRA',
-      price: '1999₽',
+      price: '999₽',
       features: [
         'Уникальный кит - /kit cobra',
         'Включить режим полета - /fly',
@@ -148,7 +148,7 @@ const privileges = {
     },
     {
       name: 'GOD',
-      price: '2499₽',
+      price: '1249₽',
       features: [
         'Уникальный кит - /kit god',
         'Включить режим полета - /fly',
@@ -160,7 +160,7 @@ const privileges = {
     },
     {
       name: 'D.HELPER',
-      price: '2999₽',
+      price: '1499₽',
       features: [
         'Наборы DRAGON PLUS PLUSPRO - /kit',
         'Неприкосновенность со стороны администрации',
@@ -178,7 +178,7 @@ const privileges = {
   standard: [
     {
       name: 'SILVER',
-      price: '149₽',
+      price: '79₽',
       features: [
         'Открыть виртуальный верстак - /craft',
         'Узнать крафт предмета - /recipe',
@@ -191,7 +191,7 @@ const privileges = {
     },
     {
       name: 'EMERALD',
-      price: '249₽',
+      price: '129₽',
       features: [
         'Надеть блок на голову - /hat',
         'Восполнить голод - /feed',
@@ -204,7 +204,7 @@ const privileges = {
     },
     {
       name: 'MASTER',
-      price: '349₽',
+      price: '179₽',
       features: [
         'Открыть эндер-сундук - /enderchest',
         'Потушить себя от огня - /ext',
@@ -217,7 +217,7 @@ const privileges = {
     },
     {
       name: 'LEGEND',
-      price: '549₽',
+      price: '279₽',
       features: [
         'Доступ к префиксам - /prefix',
         'Починить предмет- /repair',
@@ -230,7 +230,7 @@ const privileges = {
     },
     {
       name: 'WITHER',
-      price: '749₽',
+      price: '379₽',
       features: [
         'Доступ к префиксам - /prefix',
         'Доступ к чужому инвентарю - /invsee',
@@ -243,7 +243,7 @@ const privileges = {
     },
     {
       name: 'KING',
-      price: '949₽',
+      price: '479₽',
       features: [
         'Получить набор KING - /kit king',
         'Возможность писать объявление - /broadcast',
@@ -256,7 +256,7 @@ const privileges = {
     },
     {
       name: 'ENIGMA',
-      price: '1199₽',
+      price: '599₽',
       features: [
         'Получить набор ENIGMA - /kit enigma',
         'Телепортация без задержки - /call [ник]',
@@ -272,7 +272,7 @@ const privileges = {
   russian: [
     {
       name: 'СТРАЖ',
-      price: '179₽',
+      price: '89₽',
       features: [
         'Уникальный кит - /kit straz',
         'Надеть блок на голову - /hat',
@@ -286,7 +286,7 @@ const privileges = {
     },
     {
       name: 'РЫЦАРЬ',
-      price: '279₽',
+      price: '139₽',
       features: [
         'Уникальный кит - /kit ryzar',
         'Восполнить голод - /feed',
@@ -300,7 +300,7 @@ const privileges = {
     },
     {
       name: 'ДВОРЯНИН',
-      price: '479₽',
+      price: '239₽',
       features: [
         'Уникальный кит - /kit dvoryanin',
         'Открыть эндер-сундук - /enderchest',
@@ -314,7 +314,7 @@ const privileges = {
     },
     {
       name: 'ПРИНЦ',
-      price: '679₽',
+      price: '339₽',
       features: [
         'Уникальный кит - /kit prinz',
         'Сменить ник в игре - /nick',
@@ -328,7 +328,7 @@ const privileges = {
     },
     {
       name: 'БЕРСЕРК',
-      price: '979₽',
+      price: '489₽',
       features: [
         'Уникальный кит - /kit berserk',
         'Дополнительный кит - /kit king',
@@ -343,7 +343,7 @@ const privileges = {
     },
     {
       name: 'ГЕРЦОГ',
-      price: '1399₽',
+      price: '699₽',
       features: [
         'Уникальный кит - /kit gerzorg',
         'Дополнительный кит - /kit monarh',
@@ -362,31 +362,31 @@ const privileges = {
 const cases = [
   {
     name: 'Кейс с донатом',
-    price: '199₽',
+    price: '99₽',
     description: 'Может выпасть любая привилегия соответствующего режима',
     icon: 'Gift'
   },
   {
     name: 'Кейс с монетами',
-    price: '99₽',
+    price: '49₽',
     description: 'Может выпасть от 1000 до 20000 игровых монет',
     icon: 'Coins'
   },
   {
     name: 'Кейс с префиксами',
-    price: '149₽',
+    price: '79₽',
     description: 'Может выпасть уникальный префикс: ГЕОГРАФ, АНТРОПОЛОГ, ЛЕОН, ВОРОН и др.',
     icon: 'Star'
   },
   {
     name: 'Кейс с риликами/печенькими',
-    price: '79₽',
+    price: '39₽',
     description: 'Может выпасть от 10 до 15000 риликов/печенек',
     icon: 'Cookie'
   },
   {
     name: 'Кейс с вещами',
-    price: '129₽',
+    price: '69₽',
     description: 'Алмазное или железное снаряжение с рандомным зачарованием',
     icon: 'Sword'
   }
@@ -395,13 +395,13 @@ const cases = [
 const services = [
   {
     name: 'Разбан',
-    price: '299₽',
+    price: '149₽',
     description: 'Снятие запрета на вход на сервер',
     icon: 'UserCheck'
   },
   {
     name: 'Размут',
-    price: '149₽',
+    price: '79₽',
     description: 'Снятие запрета на использование чата',
     icon: 'MessageCircle'
   },
