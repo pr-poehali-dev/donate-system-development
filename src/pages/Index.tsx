@@ -6,6 +6,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
 import { Separator } from '@/components/ui/separator';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useToast } from '@/hooks/use-toast';
 
 const privileges = {
   premium: [
@@ -415,6 +419,71 @@ const services = [
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [paymentDialog, setPaymentDialog] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<{name: string, price: string} | null>(null);
+  const [playerName, setPlayerName] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const { toast } = useToast();
+
+  const handleBuyClick = (productName: string, productPrice: string) => {
+    setSelectedProduct({ name: productName, price: productPrice });
+    setPaymentDialog(true);
+  };
+
+  const handlePayment = async () => {
+    if (!playerName.trim()) {
+      toast({
+        title: 'Ошибка',
+        description: 'Введите ваш игровой ник',
+        variant: 'destructive'
+      });
+      return;
+    }
+
+    setIsProcessing(true);
+
+    try {
+      const priceNum = parseInt(selectedProduct?.price.replace('₽', '') || '0');
+      
+      const response = await fetch('https://functions.poehali.dev/4be185ca-73fc-4cb8-8c0f-8a561c9a2b33', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          product_id: selectedProduct?.name,
+          player_name: playerName,
+          price: priceNum
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.status === 'demo') {
+        toast({
+          title: 'Демо-режим',
+          description: 'Оплата пока не настроена. Обратитесь к администратору.',
+        });
+      } else if (data.payment_url) {
+        window.open(data.payment_url, '_blank');
+        toast({
+          title: 'Перенаправление на оплату',
+          description: `Заказ ${data.order_id} создан`,
+        });
+      }
+
+      setPaymentDialog(false);
+      setPlayerName('');
+    } catch (error) {
+      toast({
+        title: 'Ошибка',
+        description: 'Не удалось создать заказ',
+        variant: 'destructive'
+      });
+    } finally {
+      setIsProcessing(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
@@ -550,7 +619,10 @@ const Index = () => {
                             ))}
                           </ul>
                         </ScrollArea>
-                        <Button className="w-full mt-4 bg-gradient-to-r from-primary to-secondary">
+                        <Button 
+                          className="w-full mt-4 bg-gradient-to-r from-primary to-secondary"
+                          onClick={() => handleBuyClick(priv.name, priv.price)}
+                        >
                           <Icon name="ShoppingCart" size={16} className="mr-2" />
                           Купить
                         </Button>
@@ -584,7 +656,10 @@ const Index = () => {
                             ))}
                           </ul>
                         </ScrollArea>
-                        <Button className="w-full mt-4 bg-gradient-to-r from-primary to-secondary">
+                        <Button 
+                          className="w-full mt-4 bg-gradient-to-r from-primary to-secondary"
+                          onClick={() => handleBuyClick(priv.name, priv.price)}
+                        >
                           <Icon name="ShoppingCart" size={16} className="mr-2" />
                           Купить
                         </Button>
@@ -618,7 +693,10 @@ const Index = () => {
                             ))}
                           </ul>
                         </ScrollArea>
-                        <Button className="w-full mt-4 bg-gradient-to-r from-primary to-secondary">
+                        <Button 
+                          className="w-full mt-4 bg-gradient-to-r from-primary to-secondary"
+                          onClick={() => handleBuyClick(priv.name, priv.price)}
+                        >
                           <Icon name="ShoppingCart" size={16} className="mr-2" />
                           Купить
                         </Button>
@@ -652,7 +730,10 @@ const Index = () => {
                   </CardHeader>
                   <CardContent className="text-center space-y-4">
                     <p className="text-muted-foreground">{caseItem.description}</p>
-                    <Button className="w-full bg-gradient-to-r from-primary to-secondary">
+                    <Button 
+                      className="w-full bg-gradient-to-r from-primary to-secondary"
+                      onClick={() => handleBuyClick(caseItem.name, caseItem.price)}
+                    >
                       <Icon name="Gift" size={16} className="mr-2" />
                       Открыть кейс
                     </Button>
@@ -684,7 +765,10 @@ const Index = () => {
                   </CardHeader>
                   <CardContent className="text-center space-y-4">
                     <p className="text-muted-foreground text-sm">{service.description}</p>
-                    <Button className="w-full">
+                    <Button 
+                      className="w-full"
+                      onClick={() => handleBuyClick(service.name, service.price)}
+                    >
                       <Icon name="ShoppingCart" size={16} className="mr-2" />
                       Заказать
                     </Button>
@@ -834,6 +918,68 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      <Dialog open={paymentDialog} onOpenChange={setPaymentDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <Icon name="ShoppingCart" size={24} />
+              Оформление покупки
+            </DialogTitle>
+            <DialogDescription>
+              {selectedProduct?.name} - {selectedProduct?.price}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 py-4">
+            <div className="space-y-2">
+              <Label htmlFor="nickname">Ваш игровой ник</Label>
+              <Input
+                id="nickname"
+                placeholder="Введите ник в игре"
+                value={playerName}
+                onChange={(e) => setPlayerName(e.target.value)}
+                disabled={isProcessing}
+              />
+            </div>
+            <div className="bg-muted p-4 rounded-lg space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Товар:</span>
+                <span className="font-semibold">{selectedProduct?.name}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Сумма:</span>
+                <span className="font-bold text-lg text-primary">{selectedProduct?.price}</span>
+              </div>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => setPaymentDialog(false)}
+              disabled={isProcessing}
+            >
+              Отмена
+            </Button>
+            <Button
+              onClick={handlePayment}
+              disabled={isProcessing}
+              className="bg-gradient-to-r from-primary to-secondary"
+            >
+              {isProcessing ? (
+                <>
+                  <Icon name="Loader2" size={16} className="mr-2 animate-spin" />
+                  Обработка...
+                </>
+              ) : (
+                <>
+                  <Icon name="CreditCard" size={16} className="mr-2" />
+                  Оплатить
+                </>
+              )}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
