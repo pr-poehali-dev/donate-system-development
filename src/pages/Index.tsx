@@ -452,6 +452,7 @@ const Index = () => {
         },
         body: JSON.stringify({
           product_id: selectedProduct?.name,
+          product_name: selectedProduct?.name,
           player_name: playerName,
           price: priceNum
         })
@@ -505,7 +506,7 @@ const Index = () => {
             </div>
             
             <div className="hidden md:flex gap-2">
-              {['Главная', 'Привилегии', 'Кейсы', 'Услуги', 'Правила', 'Контакты'].map((item) => (
+              {['Главная', 'Привилегии', 'Кейсы', 'Услуги', 'Мои покупки', 'Правила', 'Контакты'].map((item) => (
                 <Button
                   key={item}
                   variant={activeSection === item.toLowerCase() ? 'default' : 'ghost'}
@@ -825,6 +826,73 @@ const Index = () => {
                   <p className="text-muted-foreground pl-6">
                     При возникновении проблем с покупкой обращайтесь в раздел "Контакты".
                   </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
+        {activeSection === 'мои покупки' && (
+          <div className="space-y-8 animate-fade-in max-w-4xl mx-auto">
+            <div className="text-center space-y-4">
+              <h2 className="text-4xl font-bold">Мои покупки</h2>
+              <p className="text-muted-foreground text-lg">Проверьте статус ваших заказов</p>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Icon name="Search" size={24} />
+                  Поиск покупок
+                </CardTitle>
+                <CardDescription>Введите ваш игровой ник или ID заказа</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder="Игровой ник или ID заказа"
+                      value={playerName}
+                      onChange={(e) => setPlayerName(e.target.value)}
+                    />
+                    <Button onClick={async () => {
+                      if (!playerName.trim()) return;
+                      try {
+                        const response = await fetch(
+                          `https://functions.poehali.dev/e2b2ac74-0f2e-49b0-9a07-e04285175a60?player_name=${playerName}`
+                        );
+                        const data = await response.json();
+                        if (data.orders && data.orders.length > 0) {
+                          toast({
+                            title: 'Найдено заказов',
+                            description: `${data.orders.length} заказов для ${playerName}`,
+                          });
+                        } else {
+                          toast({
+                            title: 'Не найдено',
+                            description: 'Покупки не найдены',
+                            variant: 'destructive'
+                          });
+                        }
+                      } catch (error) {
+                        toast({
+                          title: 'Ошибка',
+                          description: 'Не удалось загрузить данные',
+                          variant: 'destructive'
+                        });
+                      }
+                    }}>
+                      <Icon name="Search" size={16} className="mr-2" />
+                      Найти
+                    </Button>
+                  </div>
+
+                  <div className="bg-muted/50 p-6 rounded-lg text-center space-y-2">
+                    <Icon name="Info" size={32} className="mx-auto text-muted-foreground" />
+                    <p className="text-muted-foreground">
+                      Введите ваш ник, чтобы увидеть историю покупок
+                    </p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
