@@ -429,7 +429,7 @@ const Index = () => {
               />
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  Yuki Core
+                  KolixWorld
                 </h1>
                 <p className="text-sm text-muted-foreground">Магазин донатов</p>
               </div>
@@ -460,7 +460,7 @@ const Index = () => {
                 Официальный магазин донатов
               </Badge>
               <h2 className="text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-scale-in">
-                Yuki Core Server
+                KolixWorld Server
               </h2>
               <div className="flex items-center justify-center gap-2 text-2xl text-muted-foreground">
                 <Icon name="Server" size={24} />
@@ -816,7 +816,7 @@ const Index = () => {
                 className="h-10 w-10 rounded-lg"
               />
               <div>
-                <p className="font-semibold">Yuki Core</p>
+                <p className="font-semibold">KolixWorld</p>
                 <p className="text-sm text-muted-foreground">© 2024 Все права защищены</p>
               </div>
             </div>
