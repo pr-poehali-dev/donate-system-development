@@ -764,7 +764,7 @@ const Index = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-4">Присоединяйтесь к нашему Discord серверу</p>
-                  <Button className="w-full bg-[#5865F2] hover:bg-[#4752C4]">
+                  <Button className="w-full bg-[#5865F2] hover:bg-[#4752C4]" onClick={() => window.open('https://discord.gg/YpmsSZJzY2', '_blank')}>
                     <Icon name="MessageCircle" size={16} className="mr-2" />
                     Перейти в Discord
                   </Button>
@@ -780,7 +780,7 @@ const Index = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-4">Напишите нам в Telegram</p>
-                  <Button className="w-full bg-[#0088cc] hover:bg-[#006699]">
+                  <Button className="w-full bg-[#0088cc] hover:bg-[#006699]" onClick={() => window.open('https://t.me/kolixworld', '_blank')}>
                     <Icon name="Send" size={16} className="mr-2" />
                     Написать в Telegram
                   </Button>
@@ -790,15 +790,16 @@ const Index = () => {
               <Card className="hover:scale-105 transition-transform">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
-                    <Icon name="Mail" size={24} className="text-primary" />
-                    Email
+                    <Icon name="Share2" size={24} className="text-primary" />
+                    VK
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-4">Отправьте нам письмо</p>
-                  <code className="bg-muted px-4 py-2 rounded block text-center">
-                    support@yukicore.org
-                  </code>
+                  <p className="text-muted-foreground mb-4">Подпишитесь на нашу группу ВКонтакте</p>
+                  <Button className="w-full bg-[#0077FF] hover:bg-[#0066DD]" onClick={() => window.open('https://vk.com/kolixworld', '_blank')}>
+                    <Icon name="Share2" size={16} className="mr-2" />
+                    Перейти в VK
+                  </Button>
                 </CardContent>
               </Card>
             </div>
