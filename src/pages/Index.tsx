@@ -11,7 +11,7 @@ const privileges = {
   premium: [
     {
       name: 'HERO',
-      price: '49₽',
+      price: '9₽',
       features: [
         'Уникальный кит - /kit hero',
         'Виртуальный верстак - /craft',
@@ -25,7 +25,7 @@ const privileges = {
     },
     {
       name: 'TITAN',
-      price: '99₽',
+      price: '50₽',
       features: [
         'Уникальный кит - /kit titan',
         'Надеть блок - /hat',
@@ -40,7 +40,7 @@ const privileges = {
     },
     {
       name: 'AVENGER',
-      price: '149₽',
+      price: '300₽',
       features: [
         'Уникальный кит - /kit avenger',
         'Открыть эндер-сундук - /enderchest',
@@ -56,7 +56,7 @@ const privileges = {
     },
     {
       name: 'OVERLORD',
-      price: '249₽',
+      price: '400₽',
       features: [
         'Уникальный кит - /kit overlord',
         'Доступ к префиксам - /prefix',
@@ -73,7 +73,7 @@ const privileges = {
     },
     {
       name: 'MAGISTER',
-      price: '399₽',
+      price: '500₽',
       features: [
         'Уникальный кит - /kit magister',
         'Доступ к префиксам - /prefix',
@@ -92,7 +92,7 @@ const privileges = {
     },
     {
       name: 'IMPERATOR',
-      price: '499₽',
+      price: '600₽',
       features: [
         'Уникальный кит - /kit imperator',
         'Доступ к префиксам - /prefix',
@@ -112,7 +112,7 @@ const privileges = {
     },
     {
       name: 'DRAGON',
-      price: '749₽',
+      price: '700₽',
       features: [
         'Уникальный кит - /kit dragon',
         'Доступ к префиксам - /prefix',
@@ -134,7 +134,7 @@ const privileges = {
     },
     {
       name: 'COBRA',
-      price: '999₽',
+      price: '900₽',
       features: [
         'Уникальный кит - /kit cobra',
         'Включить режим полета - /fly',
@@ -148,7 +148,7 @@ const privileges = {
     },
     {
       name: 'GOD',
-      price: '1249₽',
+      price: '1000₽',
       features: [
         'Уникальный кит - /kit god',
         'Включить режим полета - /fly',
@@ -160,7 +160,7 @@ const privileges = {
     },
     {
       name: 'D.HELPER',
-      price: '1499₽',
+      price: '800₽',
       features: [
         'Наборы DRAGON PLUS PLUSPRO - /kit',
         'Неприкосновенность со стороны администрации',
